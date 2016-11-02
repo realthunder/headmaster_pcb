@@ -1,0 +1,82 @@
+
+(rules PCB body
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 2333)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.4)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.7)
+    )
+  )
+  (rule
+    (width 250.0)
+    (clear 200.2)
+    (clear 125.0 (type smd_to_turn_gap))
+    (clear 50.0 (type smd_smd))
+  )
+  (padstack "Via[0-1]_600:400_um"
+    (shape
+      (circle F.Cu 600.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 600.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_600:400_um" "Via[0-1]_600:400_um" default
+  )
+  (via 
+    "Via[0-1]_600:400_um-kicad_default" "Via[0-1]_600:400_um" "kicad_default"
+  )
+  (via_rule
+    default "Via[0-1]_600:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_600:400_um-kicad_default"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    GND VCC "/SRV_CAM" "/SRV_BRAKE" "/SRV_LOCK" /STEP "/STEP_DIR" /TXD
+    /RXD "/SRV_FOOT" "/FRAME_STOP" "/FAN_PWM" "/FAN_TACHO" "/SRV_EN" "/~IO_RST" /INTB
+    /INTA "/EP_EN" "/TMP_EN" /TMP "/FAN_EN" "/BAT_CTL" "/BAT1_VOUT" "/BAT2_VOUT"
+    /VIN "/EP_VOUT" "/STEP_B2" "/STEP_B1" "/STEP_A1" "/STEP_A2" "/SRV_VOUT" /BTN21
+    /BTN22 /BTN23 /BTN11 /BTN12 /BTN13 "/EP_RXD" "/EP_TXD" "/FAN_VOUT"
+    /SDA /SCL "/~STEP_SLP" "/STEP_STOP1" "/STEP_STOP2" "/BAT1_STAT" "/BAT2_STAT" "/LED_CLK"
+    "/LED_DAT" "/LED_VOUT" "/LED_EN"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
