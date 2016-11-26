@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name body)(type KiCad)(uri C:\works\headmaster\code\pcb\subs\body\body.pretty)(options "")(descr ""))
+)
